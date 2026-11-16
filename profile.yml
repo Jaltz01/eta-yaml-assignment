@@ -18,3 +18,10 @@ courses:
   - Introduction to Python - completed "true" - score: 85
   - Advanced JavaScript - completed "true" - score: 90
   - Web Development with HTML and CSS - completed "true" - score: 88
+
+goals:  |  
+  - Learn Python  "i like to learn new things"
+  - Learn JavaScript  "I enjoy learning programming"
+  - Learn HTML  "I want to build better websites"
+  - Learn CSS  "I want to make websites look better"
+
