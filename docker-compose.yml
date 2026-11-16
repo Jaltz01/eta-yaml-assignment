@@ -1,29 +1,26 @@
-db:
-  image: postgres:16-alpine
-  environment:
-    POSTGRES_PASSWORD: example
-  volumes:
-    - dbdata:/var/lib/postgresql/data
-  healthcheck:
-    test: ["CMDSHELL", "pg_isready"]
-    interval: 5s
-    retries: 5
-  networks:
-    - back-net
-  volumes:
-    - dbdata
-  networks:
-    - back-net
-api:
-  image: nginx:1.27 (a stand-in for a real API)
-  ports:
-    - "5000:80"
-  environment:
-    DB_HOST: db
-  depends_on:
-    db:
-      condition: service_healthy
-  networks:
-    - front-net
-    - back-net
-web: [image nginx:1.27, port "8080:80", depends on api, network front-net]
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 5s
+      retries: 5
+    networks:
+      - back-net
+  api:
+    image: nginx:1.27
+    ports:
+      - "5000:80"
+    environment:
+      DB_HOST: db
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - front-net
+      - back-net
+  web: {image: "nginx:1.27", ports: ["8080:80"], depends_on: [api], networks: [front-net]}
