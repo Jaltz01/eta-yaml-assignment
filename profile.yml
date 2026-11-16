@@ -1,0 +1,20 @@
+Profile:
+  name: fela ade
+  age: 30
+  enrolled: true
+
+git_version: "2.40"
+
+skills:
+  - Python
+  - JavaScript
+  - HTML
+  - CSS
+
+map:
+  address: 123 Main St, Anytown, USA
+
+courses:
+  - Introduction to Python - completed "true" - score: 85
+  - Advanced JavaScript - completed "true" - score: 90
+  - Web Development with HTML and CSS - completed "true" - score: 88
